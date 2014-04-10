@@ -52,7 +52,7 @@ public abstract class ChequeTest {
 		
 		Cheque cheque = createCheque();
 		
-		String expected = "Two dollars and sixy seven cents.";
+		String expected = "Two dollars and sixty seven cents.";
 		String actual = cheque.inWords(2.67);
 		
 		assertEquals(expected, actual);
