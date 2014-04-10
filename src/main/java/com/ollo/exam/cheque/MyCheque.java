@@ -5,37 +5,31 @@ import java.util.Map;
 
 /**
  * Implementation of Cheque interface.
- * <p/>
- * Make your changes here.
+ * 4/10/2014
+ * Joao Ricardo Louzada
+ * Kansas City - MO, USA
  */
 public class MyCheque implements Cheque {
 
-	//@Override
-	//public String inWords(double amount) throws ChequeException {
-		// TODO implement your solution here
-		//throw new UnsupportedOperationException("Not supported yet.");
-	//}
 	
-	//public String spell(String amount) throws Exception{
 	@Override
 	public String inWords(double amount) throws ChequeException {
-		String[] vector;
-		String number = new String();
-		int num;
-		if((amount > 10000000)||(amount < 0)){
-			throw new UnsupportedOperationException("ChequeException");
+		String[] vector;// This vector will holds two Strings
+						//One String to Bills and another one to Cents.
+		
+		if((amount > 10000000)||(amount < 0)){// Avoid amount outside of the limits.
+			throw new ChequeException("ChequeException",null);
 		}
-		String amountString = String.valueOf(amount);
-		vector = split(amountString);
-		//number = vector[0]+vector[1];
-		//num = Integer.parseInt(number);
-		//if ((num > 1000000000)||(num < 0)){
 		
-		
+		String amountString = String.valueOf(amount);//Change Double to String.
+		vector = split(amountString);//Split the string in two Strings.
+									 //vector[0] holds Bills.
+									 //vector[1] holds Cents.
+				
 		String text = new String("");
-		text = printOut(vector);
-		text = takeOfSpaces(text);
-		text = CapitalizeString(text);
+		text = printOut(vector);//Write the cheque.
+		text = takeOfSpaces(text);//Take of double spaces.
+		text = CapitalizeString(text);//Capitalize the first letter.
 		return text;
 	}
 	
@@ -52,7 +46,7 @@ public class MyCheque implements Cheque {
 		String[] v1 = Spelled.split("\\s+");
 		for(int i = 0;i < v1.length;i++){
 			text += v1[i];
-			if(i == v1.length-1) break;
+			if(i == v1.length-1) break;//Avoid a space in the end of the String
 			text += " ";
 		}
 		return text;
